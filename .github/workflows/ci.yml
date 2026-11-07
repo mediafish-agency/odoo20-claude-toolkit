@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ODOO20_ROOT: ${{ github.workspace }}/odoo
-      ODOO20_DATA_DIR: ${{ runner.temp }}/odoo20-data
+      ODOO20_DATA_DIR: ${{ github.workspace }}/odoo20-data   # runner.* is not available in job-level env
     steps:
       - uses: actions/checkout@v4
         with:
