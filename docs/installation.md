@@ -32,19 +32,25 @@ Enterprise (if you have access) and your own addons stay in their own folders. Y
 
 ## 2. Install the plugin
 
-From a terminal:
+From a terminal. Replace `/path/to/your/odoo20` with the folder of **your** Odoo 20 checkout (the one that
+contains `odoo-bin`):
 
 ```bash
 claude plugin marketplace add mediafish-agency/odoo20-claude-toolkit
-claude plugin install odoo20@mediafish-odoo --config odoo_root="$HOME/src/odoo20"
+claude plugin install odoo20@mediafish-odoo --config odoo_root="/path/to/your/odoo20"
 ```
 
 Or in one command (adds the marketplace if needed):
 
 ```bash
 claude plugin install odoo20 --marketplace mediafish-agency/odoo20-claude-toolkit \
-  --config odoo_root="$HOME/src/odoo20"
+  --config odoo_root="/path/to/your/odoo20"
 ```
+
+The `--config` part is optional when you start Claude Code inside the Odoo folder or next to it (see the
+auto-detection rule below). If the configured folder has no `odoo-bin`, the server falls back to
+auto-detection and `odoo_status` shows a warning. To change the value later:
+`claude plugin configure odoo20@mediafish-odoo`.
 
 Or inside Claude Code: `/plugin` -> *Marketplaces* -> add `mediafish-agency/odoo20-claude-toolkit`, then
 install `odoo20` from it.
@@ -65,7 +71,8 @@ auto-detects an Odoo 20 tree in the project folder, its two parent folders, and 
 
 ## 3. First run: `/odoo20:setup`
 
-Start Claude Code in your project and type:
+Start Claude Code in your project (`cd /path/to/your/project && claude`) and type this at the **Claude
+prompt**. It is a Claude Code slash command: typed in bash it fails with `No such file or directory`.
 
 ```
 /odoo20:setup

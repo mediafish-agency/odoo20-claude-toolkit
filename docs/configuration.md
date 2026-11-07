@@ -26,7 +26,8 @@ Empty values mean "use the default".
 
 Resolution order:
 
-1. the option (or `ODOO20_ROOT`);
+1. the option (or `ODOO20_ROOT`), when that folder contains `odoo-bin`. If it does not (a typo, a moved
+   checkout), the server continues with step 2 and `odoo_status` shows a warning;
 2. auto-detection: the project folder, its two parents, and the `odoo*` subfolders of those, keeping the first
    folder that has `odoo-bin` and whose `odoo/release.py` says version 20. A layout like
    `project/{odoo,enterprise,custom}` is found from any of its subfolders;

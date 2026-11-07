@@ -15,8 +15,8 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - run: pip install "ruff>=0.6"
@@ -36,17 +36,17 @@ jobs:
       ODOO20_ROOT: ${{ github.workspace }}/odoo
       ODOO20_DATA_DIR: ${{ github.workspace }}/odoo20-data   # runner.* is not available in job-level env
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           path: toolkit
       - name: Odoo 20.0 source (shallow)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: odoo/odoo
           ref: "20.0"
           path: odoo
           fetch-depth: 1
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: MCP server dependencies

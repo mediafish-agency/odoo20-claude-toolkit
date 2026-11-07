@@ -40,16 +40,22 @@ This toolkit:
 source checkout. PostgreSQL 16+ is needed for the tools that install modules and run tests.
 Details: [docs/installation.md](docs/installation.md).
 
-```bash
-# 1. Odoo 20 source (skip if you have one)
-git clone --depth 1 --branch 20.0 https://github.com/odoo/odoo.git ~/src/odoo20
+**1. In a terminal**, install the plugin. `odoo_root` must be **your** Odoo 20 folder, the one that contains
+`odoo-bin`:
 
-# 2. Install the plugin
+```bash
+# no Odoo 20 checkout yet? get one:
+#   git clone --depth 1 --branch 20.0 https://github.com/odoo/odoo.git ~/src/odoo20
+
 claude plugin marketplace add mediafish-agency/odoo20-claude-toolkit
-claude plugin install odoo20@mediafish-odoo --config odoo_root="$HOME/src/odoo20"
+claude plugin install odoo20@mediafish-odoo --config odoo_root="/path/to/your/odoo20"
 ```
 
-Then start Claude Code in your Odoo project and run:
+You can leave out `--config odoo_root=...` when you start Claude Code inside the Odoo folder or next to it:
+the tree is then auto-detected.
+
+**2. Start Claude Code** in your Odoo project (`cd /path/to/your/project && claude`) and type this
+**at the Claude prompt** (it is a Claude Code command, not a shell command):
 
 ```
 /odoo20:setup

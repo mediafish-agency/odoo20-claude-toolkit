@@ -9,7 +9,7 @@ import time
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
-from ..config import ROOT_HELP, Config
+from ..config import Config
 from .extract import TABLE_KEYS, extract_module
 from .scanner import find_modules, list_files
 
@@ -127,7 +127,7 @@ class IndexManager:
 
     def db(self) -> sqlite3.Connection:
         if not self.config.has_odoo_root and not self.ready:
-            raise RuntimeError(ROOT_HELP)
+            raise RuntimeError(self.config.root_problem())
         if not self.ready:
             self.ensure_started()
             p = self.progress
@@ -163,7 +163,7 @@ class IndexManager:
 
     def _build(self, force: bool = False) -> dict:
         if not self.config.has_odoo_root:
-            raise RuntimeError(ROOT_HELP)
+            raise RuntimeError(self.config.root_problem())
         t0 = time.time()
         modules, self.duplicates = find_modules(self.config.addons_paths)
         for entry in modules.values():

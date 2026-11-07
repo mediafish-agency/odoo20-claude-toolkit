@@ -9,7 +9,7 @@ import socket
 import subprocess
 from pathlib import Path
 
-from ..config import DB_CONF_KEYS, ROOT_HELP, TEMPLATE_DB, Config
+from ..config import DB_CONF_KEYS, TEMPLATE_DB, Config
 from ..util import ToolError
 
 HELPERS = Path(__file__).resolve().parent / "helpers"
@@ -21,10 +21,8 @@ class OdooRuntime:
 
     # -- prerequisites -------------------------------------------------------
     def check(self) -> None:
-        if self.cfg.odoo_root_source == "unset":
-            raise ToolError(ROOT_HELP)
-        if not self.cfg.odoo_bin.is_file():
-            raise ToolError(f"odoo-bin not found under {self.cfg.odoo_root} (plugin option odoo_root)")
+        if problem := self.cfg.root_problem():
+            raise ToolError(problem)
         if not self.cfg.odoo_python.exists():
             raise ToolError(
                 f"Odoo runtime interpreter {self.cfg.odoo_python} not found. Create it with: "

@@ -20,10 +20,21 @@ interpreter, the database allowlist and the data folder.
   `PYTHON=/path/to/python3.12 bash .../scripts/bootstrap.sh` for an interpreter that is not on the `PATH`.
 - Behind a proxy: the bootstrap uses pip, so set `HTTPS_PROXY`/`PIP_INDEX_URL` as you would for pip.
 
-## "No Odoo 20 source tree configured"
+## `bash: /odoo20:setup: No such file or directory`
 
-Set the `odoo_root` option to the folder that contains `odoo-bin`, then `/reload-plugins`. Auto-detection only
-accepts trees whose `odoo/release.py` says version 20. A tree in some unrelated folder will not be found.
+`/odoo20:...` commands are typed at the Claude Code prompt, not in a shell. Run `claude` first.
+
+## "No Odoo 20 source tree configured" / "odoo_root ... has no odoo-bin"
+
+Set the `odoo_root` option to the folder that contains `odoo-bin`, then `/reload-plugins`:
+
+```bash
+printf '%s' '{"odoo_root": "/path/to/your/odoo20"}' | claude plugin configure odoo20@mediafish-odoo --values-stdin
+```
+
+Auto-detection only accepts trees whose `odoo/release.py` says version 20. A tree in some unrelated folder
+will not be found. When the option points to a folder without `odoo-bin` but an Odoo 20 tree is found near
+the project, that tree is used and `odoo_status` shows a warning.
 
 ## "The Odoo source index is being built"
 

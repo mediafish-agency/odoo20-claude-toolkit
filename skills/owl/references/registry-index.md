@@ -6,53 +6,53 @@
 
 | category | entries | sample keys | modules (first 6) |
 |---|---|---|---|
-| `web_tour.tours` | 987 | `AddMultipleSerialsAtOnce`, `AutofillTour`, `BarcodeScanningWeightedProductTour`, `CashClosingDetails`, `CashierCanSeeProductInfo` | pos_stock, pos_sms, point_of_sale, pos_hr, pos_loyalty, pos_event |
-| `fields` | 412 | `CopyClipboardButton`, `CopyClipboardChar`, `CopyClipboardJobLinkButton`, `CopyClipboardURL`, `EventMailTemplateReferenceField` | web, website_hr_recruitment, event, payment, hr_recruitment, account |
-| `public.interactions` | 251 | `I.name`, `Interaction.name`, `account.account_sidebar`, `account.portal_additional_identifiers`, `account_payment.portal_invoice_page_payment` | web, account, account_payment, account_peppol, auth_passkey, auth_passkey_portal |
-| `views` | 214 | `account_dashboard_kanban`, `account_documents_kanban`, `account_hierarchy_list`, `account_move_form`, `account_tree` | account, mail, project, analytic, hr_attendance, calendar |
-| `website-plugins` | 141 | `AchievementsListOptionPlugin.id`, `AddToCartOptionPlugin.id`, `AgeVerificationOptionPlugin.id`, `AnimateOptionPlugin.id`, `AnimatedNumberOptionPlugin.id` | website, website_sale, website_blog, website_event, website_forum, website_mail_group |
-| `services` | 134 | `accountNotification`, `account_move`, `action`, `action`, `action` | account, web, bus, barcodes, point_of_sale, analytic |
-| `actions` | 99 | `Boom`, `Boom`, `Boom`, `HelloWorldTest`, `HelloWorldTest` | web, mass_mailing, website, account_peppol, spreadsheet, l10n_eg_edi_eta |
-| `public.interactions.edit` | 80 | `html_editor.embedded_component`, `public_components`, `test.interaction`, `test.interaction`, `test.interaction` | html_editor, website, portal, website_sale, website_payment, website_blog |
-| `view_widgets` | 74 | `account_currency_exchange_rate`, `account_file_uploader`, `account_onboarding`, `account_pick_currency_date`, `attach_document` | account, web, auth_signup, hr, calendar, im_livechat |
-| `website-options` | 71 | `AddToCartOption.id`, `AgeVerificationOption.id`, `AnimateOption.id`, `BlockquoteOption.id`, `BlogPageOption.id` | website_sale, website, website_blog, website_customer, website_event, website_mass_mailing |
-| `services (plugins)` | 50 | `ActionPlugin`, `AssetsWatchdogPlugin`, `BarcodePlugin`, `BootstrapInstance`, `BottomSheetPlugin` | web, bus, barcodes, point_of_sale, mail, im_livechat |
-| `main_components` | 33 | `BlockUI`, `CartNotificationContainer`, `ConvertInlineContainer`, `DebugWidget`, `DiscussClientAction` | web, website_sale, mail, point_of_sale, website, html_editor |
+| `web_tour.tours` | 987 | `AddMultipleSerialsAtOnce`, `AutofillTour`, `BarcodeScanningWeightedProductTour`, `CashClosingDetails`, `CashierCanSeeProductInfo` | account, auth_passkey, auth_passkey_portal, auth_timeout, auth_totp, auth_totp_mail |
+| `fields` | 412 | `CopyClipboardButton`, `CopyClipboardChar`, `CopyClipboardJobLinkButton`, `CopyClipboardURL`, `EventMailTemplateReferenceField` | account, account_peppol, analytic, auth_password_policy, base_automation, calendar |
+| `public.interactions` | 251 | `I.name`, `Interaction.name`, `account.account_sidebar`, `account.portal_additional_identifiers`, `account_payment.portal_invoice_page_payment` | account, account_payment, account_peppol, auth_passkey, auth_passkey_portal, auth_signup |
+| `views` | 214 | `account_dashboard_kanban`, `account_documents_kanban`, `account_hierarchy_list`, `account_move_form`, `account_tree` | account, analytic, auth_passkey, base_import_module, board, calendar |
+| `website-plugins` | 141 | `AchievementsListOptionPlugin.id`, `AddToCartOptionPlugin.id`, `AgeVerificationOptionPlugin.id`, `AnimateOptionPlugin.id`, `AnimatedNumberOptionPlugin.id` | website, website_blog, website_event, website_forum, website_hr_recruitment, website_mail_group |
+| `services` | 134 | `accountNotification`, `account_move`, `action`, `action`, `action` | account, account_peppol, analytic, auth_timeout, barcodes, bus |
+| `actions` | 99 | `Boom`, `Boom`, `Boom`, `HelloWorldTest`, `HelloWorldTest` | account, account_peppol, api_doc, base_import, event, hr |
+| `public.interactions.edit` | 80 | `html_editor.embedded_component`, `public_components`, `test.interaction`, `test.interaction`, `test.interaction` | html_editor, portal, website, website_blog, website_event, website_mail |
+| `view_widgets` | 74 | `account_currency_exchange_rate`, `account_file_uploader`, `account_onboarding`, `account_pick_currency_date`, `attach_document` | account, auth_signup, calendar, crm, delivery, hr |
+| `website-options` | 71 | `AddToCartOption.id`, `AgeVerificationOption.id`, `AnimateOption.id`, `BlockquoteOption.id`, `BlogPageOption.id` | website, website_blog, website_crm_partner_assign, website_customer, website_event, website_mass_mailing |
+| `services (plugins)` | 50 | `ActionPlugin`, `AssetsWatchdogPlugin`, `BarcodePlugin`, `BootstrapInstance`, `BottomSheetPlugin` | barcodes, bus, im_livechat, mail, point_of_sale, web |
+| `main_components` | 33 | `BlockUI`, `CartNotificationContainer`, `ConvertInlineContainer`, `DebugWidget`, `DiscussClientAction` | base_import, html_builder, html_editor, mail, point_of_sale, test_translation_mode |
 | `builder-plugins` | 31 | `AlertOptionPlugin.id`, `BackgroundImageOptionPlugin.id`, `BackgroundOptionPlugin.id`, `BackgroundPositionOptionPlugin.id`, `BackgroundShapeOptionPlugin.id` | html_builder |
 | `mass_mailing-plugins` | 28 | `AlertOptionPlugin.id`, `BentoBlocksOptionPlugin.id`, `CTABadgePlugin.id`, `CustomizeMailingPlugin.id`, `DesignTabPlugin.id` | mass_mailing |
-| `pos_available_models` | 28 | `AccountCashRounding.pythonModel`, `AccountFiscalPosition.pythonModel`, `DecimalPrecision.pythonModel`, `LoyaltyCard.pythonModel`, `LoyaltyProgram.pythonModel` | point_of_sale, pos_loyalty, pos_self_order, pos_restaurant |
-| `translation-plugins` | 27 | `AnimateOptionPlugin.id`, `AttributeTranslationPlugin.id`, `BadgeTranslationPlugin.id`, `ButtonTranslationPlugin.id`, `CarouselOptionTranslationPlugin.id` | website, html_builder, website_mass_mailing |
-| `share_target_items` | 26 | `AccountShareTargetItem.template`, `BillShareTargetItem.name`, `CustomShareTargetItem.name`, `ExpenseShareTargetItem.name`, `LeadShareTargetItem.name` | account, web, crm, hr_expense, hr_holidays, project |
-| `command_provider` | 24 | `!`, `#`, `#`, `@`, `@` | web, mail, test_translation_mode, im_livechat, spreadsheet, web_tour |
-| `user_menuitems` | 22 | `bad_item`, `bad_item`, `component-item`, `eye_item`, `eye_item` | web, mail, mysubscription |
-| `error_handlers` | 21 | `NonSecureContextErrorHandler`, `__test_handler__`, `__test_handler__`, `__test_handler__`, `__test_handler__` | web, website, point_of_sale, survey, website_cf_turnstile |
-| `systray` | 18 | `SwitchCompanyMenu`, `addon.myitem`, `addon.myitem1`, `addon.myitem1`, `addon.myitem2` | web, mail, hr_attendance |
-| `cogMenu` | 17 | `account-fetch-e-invoices`, `add-to-board`, `configure-project-menu`, `convert-project-to-template-menu`, `data_refresh_menu` | account, board, project, data_recycle, web, hr_work_entry |
+| `pos_available_models` | 28 | `AccountCashRounding.pythonModel`, `AccountFiscalPosition.pythonModel`, `DecimalPrecision.pythonModel`, `LoyaltyCard.pythonModel`, `LoyaltyProgram.pythonModel` | point_of_sale, pos_loyalty, pos_restaurant, pos_self_order |
+| `translation-plugins` | 27 | `AnimateOptionPlugin.id`, `AttributeTranslationPlugin.id`, `BadgeTranslationPlugin.id`, `ButtonTranslationPlugin.id`, `CarouselOptionTranslationPlugin.id` | html_builder, website, website_mass_mailing |
+| `share_target_items` | 26 | `AccountShareTargetItem.template`, `BillShareTargetItem.name`, `CustomShareTargetItem.name`, `ExpenseShareTargetItem.name`, `LeadShareTargetItem.name` | account, crm, hr_expense, hr_holidays, project, project_todo |
+| `command_provider` | 24 | `!`, `#`, `#`, `@`, `@` | im_livechat, mail, spreadsheet, test_translation_mode, web, web_tour |
+| `user_menuitems` | 22 | `bad_item`, `bad_item`, `component-item`, `eye_item`, `eye_item` | mail, mysubscription, web |
+| `error_handlers` | 21 | `NonSecureContextErrorHandler`, `__test_handler__`, `__test_handler__`, `__test_handler__`, `__test_handler__` | point_of_sale, survey, web, website, website_cf_turnstile |
+| `systray` | 18 | `SwitchCompanyMenu`, `addon.myitem`, `addon.myitem1`, `addon.myitem1`, `addon.myitem2` | hr_attendance, mail, web |
+| `cogMenu` | 17 | `account-fetch-e-invoices`, `add-to-board`, `configure-project-menu`, `convert-project-to-template-menu`, `data_refresh_menu` | account, base_import, base_setup, board, data_recycle, hr_presence |
 | `pos_payment_providers` | 16 | `adyen`, `bancontact_pay`, `cashdro`, `cashmatic`, `dpopay` | pos_adyen, pos_bancontact_pay, pos_cashdro, pos_cashmatic, pos_dpopay, pos_glory_cash |
-| `public_components` | 13 | `account.tests_shared_js_python`, `my_public_comp`, `my_public_comp`, `my_public_comp`, `my_public_comp` | account, website, web, auth_password_policy_signup, portal, spreadsheet_dashboard |
-| `command_setup` | 12 | `!`, `#`, `#`, `/`, `@` | web, mail |
+| `public_components` | 13 | `account.tests_shared_js_python`, `my_public_comp`, `my_public_comp`, `my_public_comp`, `my_public_comp` | account, auth_password_policy_signup, portal, spreadsheet_dashboard, web, website |
+| `command_setup` | 12 | `!`, `#`, `#`, `/`, `@` | mail, web |
 | `builder-options` | 11 | `AddProductOption.id`, `ButtonStyleOption.id`, `ClickableCardOption.id`, `DateTimeFieldOption.id`, `ImagePopUpOption.id` | html_builder, website |
 | `pos_pages` | 10 | `ActionScreen`, `FeedbackScreen`, `FloorScreen`, `LoginScreen`, `PaymentScreen` | point_of_sale, pos_restaurant |
-| `website.form_editor_actions` | 10 | `apply_job`, `apply_job`, `apply_job`, `create_customer`, `create_customer` | website_hr_recruitment, website, website_sale, website_crm, website_mass_mailing, website_project |
+| `website.form_editor_actions` | 10 | `apply_job`, `apply_job`, `apply_job`, `create_customer`, `create_customer` | website, website_crm, website_hr_recruitment, website_mass_mailing, website_project, website_sale |
 | `public.interactions.preview` | 9 | `website.carousel_slider`, `website.countdown`, `website.dynamic_snippet`, `website.parallax`, `website.text_highlight` | website, website_blog, website_event, website_sale |
-| `command_categories` | 8 | `DISCUSS_MENTIONED`, `activity`, `app`, `apps`, `category` | mail, web, spreadsheet, html_editor |
+| `command_categories` | 8 | `DISCUSS_MENTIONED`, `activity`, `app`, `apps`, `category` | html_editor, mail, spreadsheet, web |
 | `mail.partner_compare` | 8 | `mail.archived-last-except-odoobot`, `mail.email`, `mail.followers`, `mail.id`, `mail.internal-users` | mail |
 | `mass_mailing-options` | 8 | `BentoBlocksAddCardOption.id`, `MailingBackgroundOption.id`, `MassMailingBorderOption.id`, `MassMailingImageToolOption.id`, `RecordSnapshotOption.id` | mass_mailing |
-| `debug.default` | 7 | `bus.download_logs`, `onboardingItem`, `openViewItem`, `profilingItem`, `regenerateAssets` | bus, web_tour, web |
-| `formatters` | 7 | `binary`, `float_time_days`, `full_range_percentage`, `mrp_timer`, `project_task_progressbar` | web, project, mass_mailing, mrp, hr_timesheet |
-| `builder.form_editor_actions` | 6 | `apply_job`, `create_lead`, `create_task`, `request_withdrawal`, `request_withdrawal` | website_hr_recruitment, website_crm, website_project, website_sale_project, website_sale, website |
+| `debug.default` | 7 | `bus.download_logs`, `onboardingItem`, `openViewItem`, `profilingItem`, `regenerateAssets` | bus, web, web_tour |
+| `formatters` | 7 | `binary`, `float_time_days`, `full_range_percentage`, `mrp_timer`, `project_task_progressbar` | hr_timesheet, mass_mailing, mrp, project, web |
+| `builder.form_editor_actions` | 6 | `apply_job`, `create_lead`, `create_task`, `request_withdrawal`, `request_withdrawal` | website, website_crm, website_hr_recruitment, website_project, website_sale, website_sale_project |
 | `color_picker_tabs` | 6 | `html_builder.theme`, `html_editor.custom`, `html_editor.extra`, `html_editor.gradient`, `html_editor.solid` | html_builder, html_editor |
-| `error_dialogs` | 6 | `base_automation`, `normal_error`, `odoo.addons.l10n_jo_edi.models.account_move_send.JoFotaraRejection`, `odoo.exceptions.AccessDenied`, `strange_error` | base_automation, web, l10n_jo_edi |
+| `error_dialogs` | 6 | `base_automation`, `normal_error`, `odoo.addons.l10n_jo_edi.models.account_move_send.JoFotaraRejection`, `odoo.exceptions.AccessDenied`, `strange_error` | base_automation, l10n_jo_edi, web |
 | `website_custom_menus` | 6 | `website.custom_menu_edit_menu`, `website.menu_ace_editor`, `website.menu_edit_menu`, `website.menu_optimize_seo`, `website.menu_page_properties` | website, website_links |
-| `kanban_examples` | 5 | `project`, `test`, `test`, `test`, `utm_campaign` | project, web, utm |
+| `kanban_examples` | 5 | `project`, `test`, `test`, `test`, `utm_campaign` | project, utm, web |
 | `basic-editor-plugins` | 4 | `AutofocusPlugin.id`, `MassMailingContenteditablePlugin.id`, `MassMailingLinkPlugin.id`, `UnsubscribeCommandPlugin.id` | mass_mailing |
 | `html_builder.snippetsPreprocessor` | 4 | `email_designer_snippets`, `test_snippets`, `website_sale_snippets`, `website_snippets` | mass_mailing, website, website_sale |
-| `lazy_components` | 4 | `LazyTestComponent`, `mass_mailing.MassMailingBuilder`, `spreadsheet_dashboard.GlobalFilterWidget`, `website.WebsiteBuilder` | test_assetsbundle, mass_mailing, spreadsheet_dashboard, website |
+| `lazy_components` | 4 | `LazyTestComponent`, `mass_mailing.MassMailingBuilder`, `spreadsheet_dashboard.GlobalFilterWidget`, `website.WebsiteBuilder` | mass_mailing, spreadsheet_dashboard, test_assetsbundle, website |
 | `website_systray` | 4 | `UserMenu`, `burger_menu`, `web.debug_mode_menu`, `website.WebsiteSystrayItem` | website |
-| `discuss.channel_commands` | 3 | `help`, `history`, `lead` | mail, im_livechat, crm_livechat |
+| `discuss.channel_commands` | 3 | `help`, `history`, `lead` | crm_livechat, im_livechat, mail |
 | `form_compilers` | 3 | `attachment_preview_compiler`, `chatter_compiler`, `portal_chatter_compiler` | mail, project |
-| `group_config_items` | 3 | `delete_group`, `edit_group`, `open_automations` | web, base_automation |
-| `ir.actions.report handlers` | 3 | `custom_handler`, `custom_handler`, `print_action_handler` | web, printer |
+| `group_config_items` | 3 | `delete_group`, `edit_group`, `open_automations` | base_automation, web |
+| `ir.actions.report handlers` | 3 | `custom_handler`, `custom_handler`, `print_action_handler` | printer, web |
 | `dialogs` | 2 | `custom_select_create`, `select_create` | point_of_sale, web |
 | `error_notifications` | 2 | `exceptionName`, `odoo.http.session.SessionExpiredException` | web |
 | `favoriteMenu` | 2 | `add-to-board`, `custom-favorite-item` | board, web |
@@ -60,7 +60,7 @@
 | `mail.composer/actions` | 2 | `id`, `id` | mail |
 | `mail.im_status_data` | 2 | `bot`, `mail` | mail |
 | `mail.thread/actions` | 2 | `id`, `id` | mail |
-| `mass_mailing.record-snapshot-snippet-info` | 2 | `event.event`, `product.template` | website_mass_mailing_event, mass_mailing_sale |
+| `mass_mailing.record-snapshot-snippet-info` | 2 | `event.event`, `product.template` | mass_mailing_sale, website_mass_mailing_event |
 | `printer.type.handlers` | 2 | `epos`, `zpl` | printer |
 | `public_components.edit` | 2 | `my_public_comp`, `web.user_switch` | website |
 | `sale_configurator_dialogs` | 2 | `combo`, `product` | sale |

@@ -19,8 +19,8 @@ def index() -> IndexManager:
 
 
 def odoo_version() -> str:
-    if config().odoo_root_source == "unset":
-        return "unknown (no Odoo source tree configured)"
+    if not config().has_odoo_root:
+        return "unknown (no usable Odoo source tree)"
     try:
         text = (config().odoo_root / "odoo" / "release.py").read_text(encoding="utf-8")
         m = re.search(r"^version_info\s*=\s*\((\d+),\s*(\d+)", text, re.M)

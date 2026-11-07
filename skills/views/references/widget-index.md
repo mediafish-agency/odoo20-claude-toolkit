@@ -110,8 +110,8 @@
 | `custom` | web | `static/tests/views/list/list_view.test.js:13408` |
 | `custom_field` | web | `static/tests/views/card/card_renderer.test.js:1016` |
 | `custom_field` | web | `static/tests/views/card/card_renderer.test.js:1043` |
-| `custom_field` | web | `static/tests/views/form/form_view.test.js:11364` |
 | `custom_field` | web | `static/tests/views/form/form_view.test.js:11344` |
+| `custom_field` | web | `static/tests/views/form/form_view.test.js:11364` |
 | `custom_field` | web | `static/tests/views/list/list_view.test.js:17932` |
 | `custom_field` | web | `static/tests/views/list/list_view.test.js:17949` |
 | `custom_widget` | web | `static/tests/views/calendar/calendar_view.test.js:5664` |

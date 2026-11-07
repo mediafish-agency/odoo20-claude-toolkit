@@ -67,7 +67,7 @@ def version_traps() -> str:
 
 
 def widget_index(con) -> str:
-    rows = con.execute("SELECT key, module, file, line, value FROM js_registry WHERE category='fields' ORDER BY key").fetchall()
+    rows = con.execute("SELECT key, module, file, line, value FROM js_registry WHERE category='fields' ORDER BY key, module, file, line").fetchall()
     out = [HEADER, "# Field widget index (registry.category(\"fields\"))", "",
            f"{len(rows)} keys registered in the Odoo 20 tree. Keys prefixed with a view type (`list.`, `form.`, `card.`, "
            "`calendar.`, ...) override the generic widget in that view type. Use `odoo_js(registry=\"fields\", key=...)` "
@@ -80,7 +80,7 @@ def widget_index(con) -> str:
 
 def registry_index(con) -> str:
     cats = con.execute("SELECT category, count(*) n, group_concat(DISTINCT module) mods FROM js_registry "
-                       "GROUP BY category ORDER BY n DESC").fetchall()
+                       "GROUP BY category ORDER BY n DESC, category").fetchall()
     out = [HEADER, "# JS registry categories in Odoo 20", "",
            "`registry.category(name).add(key, value)` call sites found in `static/src` and `static/tests` of every "
            "addon (`services (plugins)` lists `services.add(PluginClass)` from `@web/core/services`). "
@@ -88,7 +88,7 @@ def registry_index(con) -> str:
            "| category | entries | sample keys | modules (first 6) |", "|---|---|---|---|"]
     for c in cats:
         keys = [r[0] for r in con.execute("SELECT key FROM js_registry WHERE category=? ORDER BY key LIMIT 5", (c["category"],))]
-        mods = (c["mods"] or "").split(",")
+        mods = sorted(set((c["mods"] or "").split(",")))  # group_concat order depends on indexing order
         out.append(f"| `{c['category']}` | {c['n']} | {', '.join(f'`{k}`' for k in keys)} | {', '.join(mods[:6])} |")
     return "\n".join(out) + "\n"
 

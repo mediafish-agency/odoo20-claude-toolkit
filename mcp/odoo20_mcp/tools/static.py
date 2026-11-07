@@ -6,7 +6,6 @@ from collections import Counter
 from pathlib import Path
 
 from .. import context as ctx
-from ..config import ROOT_HELP
 from ..query import core as q
 from ..util import ToolError, did_you_mean, md_table, page, render, suggest
 from . import grep as grep_mod
@@ -40,8 +39,8 @@ def status(refresh: bool = False, fmt: str = "markdown") -> str:
         im.ensure_started()
     st = im.status()
     data = {"odoo_version": ctx.odoo_version(), "config": cfg.describe(), "index": st}
-    if cfg.odoo_root_source == "unset":
-        root_line = "- Odoo root: NOT CONFIGURED — " + ROOT_HELP
+    if problem := cfg.root_problem():
+        root_line = "- Odoo root: NOT USABLE — " + problem
     else:
         root_line = f"- Odoo root: `{cfg.odoo_root}`" + (
             " (auto-detected near the project; set the plugin option odoo_root to pin it)"
@@ -57,6 +56,9 @@ def status(refresh: bool = False, fmt: str = "markdown") -> str:
         f"- Live JSON-2: {cfg.live_url + ' db=' + (cfg.live_db or '?') if cfg.live_url else 'not configured'}"
         + (" (API key set)" if cfg.live_api_key else ""),
     ]
+    if cfg.invalid_root_option and cfg.has_odoo_root:
+        lines.append(f"- WARNING: the plugin option odoo_root (`{cfg.invalid_root_option}`) has no odoo-bin; using the "
+                     "auto-detected tree above. Fix the option to silence this.")
     if cfg.odoo_config:
         lines.append(f"- Database connection settings from: `{cfg.odoo_config}`")
     if not data["odoo_version"].startswith(("20.", "unknown")):

@@ -59,13 +59,14 @@ fi
 
 say "refreshing the Odoo source index"
 PYTHONPATH="$HERE/mcp" CLAUDE_PLUGIN_DATA="$DATA" "$VENV/bin/python" - <<'EOF'
-from odoo20_mcp.config import ROOT_HELP
 from odoo20_mcp.context import config, index
 
 cfg = config()
 if not cfg.has_odoo_root:
-    print("odoo20 bootstrap: runtime installed; index skipped.", ROOT_HELP)
+    print("odoo20 bootstrap: runtime installed; index skipped.", cfg.root_problem())
 else:
+    if cfg.invalid_root_option:
+        print(f"odoo20 bootstrap: WARNING odoo_root {cfg.invalid_root_option} has no odoo-bin; using the detected tree")
     print(f"odoo20 bootstrap: indexing {cfg.odoo_root} ({cfg.odoo_root_source})"
           + (f" + {len(cfg.extra_addons)} extra path(s)" if cfg.extra_addons else ""))
     print("odoo20 bootstrap: index", index().build())

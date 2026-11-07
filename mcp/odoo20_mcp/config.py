@@ -135,7 +135,8 @@ class Config:
     live_api_key: str
     data_dir: Path
     odoo_config: Path | None = None
-    odoo_root_source: str = "option"  # option | detected | unset
+    odoo_root_source: str = "option"  # option | detected | unset | invalid
+    invalid_root_option: Path | None = None  # odoo_root option that has no odoo-bin (detection used instead)
 
     # -- derived -----------------------------------------------------------
     @property
@@ -158,6 +159,15 @@ class Config:
     @property
     def has_odoo_root(self) -> bool:
         return self.odoo_bin.is_file()
+
+    def root_problem(self) -> str | None:
+        """Why there is no usable Odoo tree (None when there is one)."""
+        if self.has_odoo_root:
+            return None
+        if self.odoo_root_source == "unset":
+            return ROOT_HELP
+        return (f"The plugin option odoo_root is {self.odoo_root}, which has no odoo-bin. Set it to the folder "
+                "that contains odoo-bin (claude plugin configure odoo20@mediafish-odoo), then /reload-plugins.")
 
     @property
     def index_path(self) -> Path:
@@ -196,6 +206,7 @@ class Config:
         return {
             "odoo_root": str(self.odoo_root) if self.odoo_root_source != "unset" else None,
             "odoo_root_source": self.odoo_root_source,
+            "invalid_root_option": str(self.invalid_root_option) if self.invalid_root_option else None,
             "addons_paths": [str(p) for p in self.addons_paths],
             "odoo_python": str(self.odoo_python),
             "odoo_python_exists": self.odoo_python.exists(),
@@ -219,8 +230,14 @@ def _plugin_data_dir() -> str:
 def get_config() -> Config:
     data_dir = default_data_dir()
     data_dir.mkdir(parents=True, exist_ok=True)
+    invalid = None
     if raw_root := _env("ODOO20_ROOT"):
         odoo_root, source = Path(os.path.expanduser(raw_root)).resolve(), "option"
+        if not (odoo_root / "odoo-bin").is_file():
+            # a mistyped or stale option: use an Odoo 20 tree found near the project, and say so
+            invalid = odoo_root
+            detected = detect_odoo_root()
+            odoo_root, source = (detected, "detected") if detected else (odoo_root, "invalid")
     elif detected := detect_odoo_root():
         odoo_root, source = detected, "detected"
     else:
@@ -229,6 +246,7 @@ def get_config() -> Config:
     return Config(
         odoo_root=odoo_root,
         odoo_root_source=source,
+        invalid_root_option=invalid,
         odoo_config=Path(os.path.expanduser(raw_conf)).resolve() if raw_conf else None,
         extra_addons=tuple(_split_paths(_env("ODOO20_EXTRA_ADDONS"))),
         odoo_python=Path(os.path.expanduser(_env("ODOO20_PYTHON", DEFAULT_ODOO_PYTHON))),
