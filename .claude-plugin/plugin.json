@@ -1,6 +1,6 @@
 {
   "name": "odoo20",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Odoo 20 development toolkit: version-verified skills for every layer Odoo 20 uses (Python ORM, HTTP/JSON-2, XML views and data, ir.access security, QWeb and PDF reports, OWL 3 web client, website Interactions, POS, tests, migration from 19, ops) plus an MCP server that indexes the Odoo source, validates addons against Odoo 20 breaking changes and Odoo's own schemas, and runs odoo-bin on allowlisted databases.",
   "author": {
     "name": "mediafish",

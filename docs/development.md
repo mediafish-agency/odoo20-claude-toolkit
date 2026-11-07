@@ -101,6 +101,9 @@ release, with one run per case, the plugin scored 1.00 on all five cases. Withou
 
 ## Releasing
 
+Claude Code updates installed plugins by version number: a change pushed without a version bump does not
+reach users who already installed the plugin.
+
 1. Bump the version in `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json` (plugin entry and
    metadata), `mcp/pyproject.toml` and `mcp/odoo20_mcp/server.py`.
 2. Update `CHANGELOG.md`.

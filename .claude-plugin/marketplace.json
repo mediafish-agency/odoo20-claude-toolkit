@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Claude Code plugins for Odoo development by mediafish",
-    "version": "0.1.0"
+    "version": "0.1.1"
   },
   "plugins": [
     {
       "name": "odoo20",
       "source": "./",
       "description": "Odoo 20 skills + MCP server (source index, v20 validation, odoo-bin runtime, JSON-2).",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "mediafish",
         "url": "https://www.mediafish.agency"

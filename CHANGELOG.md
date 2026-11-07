@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.1 - 2026-11-07
+
+- A wrong `odoo_root` option (a folder without `odoo-bin`) no longer breaks the tools: an Odoo 20 tree found
+  near the project is used instead, with a warning in `odoo_status`; otherwise errors name the bad path.
+- Install docs: `odoo_root` is a placeholder for your own checkout; `/odoo20:setup` is typed at the Claude
+  prompt, not in a shell.
+- Generated references no longer depend on indexing order.
+
 ## 0.1.0 - 2026-11-07
 
 First public release.

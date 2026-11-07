@@ -51,7 +51,7 @@ Resolve = Annotated[Literal["static", "db"], Field(
 DbName = Annotated[str | None, Field(description="Allowlisted database for resolve=\"db\" (default: live_db option, "
                                                  "else odoo20_tmpl)")]
 
-server = MCPServer(name="odoo20", instructions=INSTRUCTIONS, version="0.1.0")
+server = MCPServer(name="odoo20", instructions=INSTRUCTIONS, version="0.1.1")
 
 
 @server.tool(annotations=RO, structured_output=False)
