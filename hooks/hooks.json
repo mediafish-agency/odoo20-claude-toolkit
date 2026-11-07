@@ -1,0 +1,29 @@
+{
+  "description": "odoo20: install the MCP runtime on first use; check edited Odoo files for Odoo 19 -> 20 breaking patterns",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/bootstrap.sh\" --if-missing --quiet",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/post_edit_check.sh\"",
+            "timeout": 20
+          }
+        ]
+      }
+    ]
+  }
+}

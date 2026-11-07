@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "odoo20": {
+      "command": "bash",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/mcp/run.sh"
+      ],
+      "env": {
+        "ODOO20_ROOT": "${user_config.odoo_root}",
+        "ODOO20_EXTRA_ADDONS": "${user_config.extra_addons_paths}",
+        "ODOO20_PYTHON": "${user_config.odoo_python}",
+        "ODOO20_DB_ALLOW": "${user_config.db_allow}",
+        "ODOO20_ALLOW_WRITES": "${user_config.allow_writes}",
+        "ODOO20_LIVE_URL": "${user_config.live_url}",
+        "ODOO20_LIVE_DB": "${user_config.live_db}",
+        "ODOO20_LIVE_API_KEY": "${user_config.live_api_key}",
+        "ODOO20_ODOO_CONFIG": "${user_config.odoo_config}"
+      }
+    }
+  }
+}

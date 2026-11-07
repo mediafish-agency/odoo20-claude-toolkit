@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="legacy_thing_view_tree" model="ir.ui.view">
+        <field name="model">legacy.thing</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" attrs="{'invisible': [('code', '=', False)]}"/>
+                <field name="code"/>
+                <field name="missing_field"/>
+            </tree>
+        </field>
+    </record>
+    <record id="legacy_thing_view_form" model="ir.ui.view">
+        <field name="model">legacy.thing</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_missing" type="object" string="Go" icon="fa-check"/>
+                    <button name="action_check" type="object" string="Check" states="draft"/>
+                </header>
+                <sheet><i class="fa fa-user"/><field name="name"/></sheet>
+                <div class="oe_chatter"/>
+            </form>
+        </field>
+    </record>
+    <record id="legacy_thing_view_search" model="ir.ui.view">
+        <field name="model">legacy.thing</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="created" string="Created" date="create_date" start_month="-2" end_month="0"/>
+            </search>
+        </field>
+    </record>
+    <record id="legacy_thing_view_calendar" model="ir.ui.view">
+        <field name="model">legacy.thing</field>
+        <field name="arch" type="xml">
+            <calendar date_start="create_date" date_delay="amount"/>
+        </field>
+    </record>
+    <record id="legacy_thing_view_kanban" model="ir.ui.view">
+        <field name="model">legacy.thing</field>
+        <field name="arch" type="xml">
+            <kanban><templates><t t-name="kanban-box"><div><field name="name"/></div></t></templates></kanban>
+        </field>
+    </record>
+    <record id="legacy_report" model="ir.actions.report">
+        <field name="name">Legacy</field>
+        <field name="model">legacy.thing</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">odoo19_legacy_demo.report_legacy</field>
+        <field name="report_file">odoo19_legacy_demo.report_legacy</field>
+    </record>
+    <template id="report_legacy">
+        <t t-call="web.external_layout_boxed">
+            <t t-set="title" t-value="'Legacy'"/>
+            <p t-esc="doc.name"/>
+        </t>
+    </template>
+    <record id="legacy_rule" model="ir.rule">
+        <field name="name">Legacy rule</field>
+        <field name="model_id" ref="model_legacy_thing"/>
+        <field name="domain_force">[('create_date', '&gt;=', context_today())]</field>
+    </record>
+    <record id="legacy_icon" model="ir.attachment">
+        <field name="name">icon</field>
+        <field name="datas" type="base64" file="odoo19_legacy_demo/static/description/icon.png"/>
+    </record>
+    <record id="legacy_activity" model="mail.activity.type">
+        <field name="name">Legacy call</field>
+        <field name="icon">fa-phone</field>
+    </record>
+    <menuitem id="legacy_menu" name="Legacy" parent="mail.menu_root_discuss"/>
+</odoo>

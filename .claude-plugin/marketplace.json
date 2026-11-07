@@ -1,0 +1,34 @@
+{
+  "name": "mediafish-odoo",
+  "owner": {
+    "name": "mediafish",
+    "url": "https://www.mediafish.agency"
+  },
+  "metadata": {
+    "description": "Claude Code plugins for Odoo development by mediafish",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "odoo20",
+      "source": "./",
+      "description": "Odoo 20 skills + MCP server (source index, v20 validation, odoo-bin runtime, JSON-2).",
+      "version": "0.1.0",
+      "author": {
+        "name": "mediafish",
+        "url": "https://www.mediafish.agency"
+      },
+      "keywords": [
+        "odoo",
+        "odoo-20",
+        "mcp",
+        "owl",
+        "orm",
+        "migration"
+      ],
+      "category": "development",
+      "homepage": "https://github.com/mediafish-agency/odoo20-claude-toolkit",
+      "repository": "https://github.com/mediafish-agency/odoo20-claude-toolkit"
+    }
+  ]
+}

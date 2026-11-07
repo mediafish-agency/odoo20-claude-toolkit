@@ -1,0 +1,3 @@
+Copied verbatim from the skills/ folder of Odoo 20.0 (https://github.com/odoo/odoo, branch 20.0)
+at commit c8a62e5f0f4ebf778c7ae288a22e2dcc9c2230bc. Do not edit; re-run scripts/sync_official_skills.py.
+Copyright Odoo S.A., licensed under the GNU LGPL v3 like Odoo Community (see NOTICE.md).

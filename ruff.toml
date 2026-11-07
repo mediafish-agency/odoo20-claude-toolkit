@@ -1,0 +1,9 @@
+# Lint settings for the toolkit's own Python code.
+# (Odoo addons are linted by odoo_validate with the Odoo tree's own ruff.toml, not with this file.)
+target-version = "py312"
+line-length = 120
+extend-exclude = ["mcp/tests/fixtures"]
+
+[lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501", "B008"]

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="library_book_view_list" model="ir.ui.view">
+        <field name="name">library.book.list</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <list string="Books" decoration-muted="state == 'draft'">
+                <field name="name"/>
+                <field name="isbn" widget="odoo20_isbn" optional="show"/>
+                <field name="author_ids" widget="many2many_tags" optional="show"/>
+                <field name="state"/>
+                <field name="page_count" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="library_book_view_form" model="ir.ui.view">
+        <field name="name">library.book.form</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <form string="Book">
+                <header>
+                    <button name="action_publish" type="object" string="Publish" class="btn-primary"
+                            icon="check" invisible="state != 'draft'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="e.g. The Odyssey"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="isbn" widget="odoo20_isbn"/>
+                            <field name="author_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="date_published" readonly="state == 'published'"/>
+                            <field name="page_count"/>
+                            <field name="is_long"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="library_book_view_search" model="ir.ui.view">
+        <field name="name">library.book.search</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="isbn"/>
+                <filter name="published" string="Published" domain="[('state', '=', 'published')]"/>
+                <filter name="date_published" string="Publication Date" date="date_published"/>
+                <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="library_book_action" model="ir.actions.act_window">
+        <field name="name">Books</field>
+        <field name="res_model">library.book</field>
+        <field name="path">library-books</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

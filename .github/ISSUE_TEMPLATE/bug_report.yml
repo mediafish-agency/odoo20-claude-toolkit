@@ -1,0 +1,30 @@
+name: Bug report
+description: Something in the skills, the MCP server or the hooks is wrong or broken
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you asked Claude or which tool you ran, what you expected, what you got.
+    validations:
+      required: true
+  - type: textarea
+    id: status
+    attributes:
+      label: odoo_status output
+      description: Ask Claude to run `odoo_status` and paste the result (remove paths or names you don't want public).
+      render: markdown
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Plugin version, `claude --version`, OS, Odoo 20.0 commit (`git -C <odoo> log --oneline -1`)
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Error output, snippet or rule id
+      description: For validator findings, include the code snippet and the rule id (e.g. XML003).
+      render: text

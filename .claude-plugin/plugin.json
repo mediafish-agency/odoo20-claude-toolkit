@@ -1,0 +1,78 @@
+{
+  "name": "odoo20",
+  "version": "0.1.0",
+  "description": "Odoo 20 development toolkit: version-verified skills for every layer Odoo 20 uses (Python ORM, HTTP/JSON-2, XML views and data, ir.access security, QWeb and PDF reports, OWL 3 web client, website Interactions, POS, tests, migration from 19, ops) plus an MCP server that indexes the Odoo source, validates addons against Odoo 20 breaking changes and Odoo's own schemas, and runs odoo-bin on allowlisted databases.",
+  "author": {
+    "name": "mediafish",
+    "url": "https://www.mediafish.agency"
+  },
+  "license": "LGPL-3.0-only",
+  "keywords": [
+    "odoo",
+    "odoo-20",
+    "orm",
+    "owl",
+    "qweb",
+    "erp",
+    "mcp",
+    "migration"
+  ],
+  "userConfig": {
+    "odoo_root": {
+      "type": "directory",
+      "title": "Odoo 20 source tree",
+      "description": "Folder containing odoo-bin (an Odoo 20.0 checkout). Leave empty to auto-detect an Odoo 20 tree in or next to the project folder.",
+      "default": ""
+    },
+    "extra_addons_paths": {
+      "type": "string",
+      "title": "Extra addons paths",
+      "description": "Comma-separated folders holding more addons (Enterprise, OCA, your own); they are indexed, validated and installable with the core.",
+      "default": ""
+    },
+    "odoo_python": {
+      "type": "string",
+      "title": "Odoo runtime Python",
+      "description": "Interpreter able to run Odoo 20 odoo-bin: an existing Odoo 20 venv, or the one created by /odoo20:setup (scripts/setup_odoo_runtime.sh).",
+      "default": "~/.venvs/odoo20/bin/python"
+    },
+    "odoo_config": {
+      "type": "string",
+      "title": "Existing odoo.conf (optional)",
+      "description": "Path to an odoo.conf whose database connection settings (db_host, db_port, db_user, db_password, db_sslmode, pg_path) the tools reuse. Empty = PostgreSQL defaults (local socket, current OS user).",
+      "default": ""
+    },
+    "db_allow": {
+      "type": "string",
+      "title": "Database allowlist",
+      "description": "Comma-separated glob patterns of databases the tools may create, test, upgrade or drop.",
+      "default": "odoo20_*"
+    },
+    "allow_writes": {
+      "type": "boolean",
+      "title": "Allow writes",
+      "description": "Allow odoo_shell commits (commit=true) and non-read JSON-2 calls through odoo_live_call. Database creation, installs and tests are gated by the database allowlist instead.",
+      "default": false
+    },
+    "live_url": {
+      "type": "string",
+      "title": "Live server URL",
+      "description": "Optional running Odoo 20 server for JSON-2 calls, e.g. http://127.0.0.1:8070",
+      "default": ""
+    },
+    "live_db": {
+      "type": "string",
+      "title": "Live database",
+      "description": "Database used for JSON-2 calls (X-Odoo-Database header).",
+      "default": ""
+    },
+    "live_api_key": {
+      "type": "string",
+      "title": "Live API key",
+      "description": "Odoo API key with scope rpc for the live database (stored in the OS credential store).",
+      "sensitive": true
+    }
+  },
+  "homepage": "https://github.com/mediafish-agency/odoo20-claude-toolkit",
+  "repository": "https://github.com/mediafish-agency/odoo20-claude-toolkit"
+}

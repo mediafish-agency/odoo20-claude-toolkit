@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 5 * * 1"   # weekly: catch changes on Odoo's 20.0 branch
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "ruff>=0.6"
+      - name: Ruff
+        run: ruff check mcp scripts
+      - name: Shell syntax
+        run: for f in scripts/*.sh mcp/run.sh; do bash -n "$f"; done
+      - name: JSON manifests
+        run: |
+          for f in .claude-plugin/plugin.json .claude-plugin/marketplace.json .mcp.json hooks/hooks.json; do
+            python -m json.tool "$f" > /dev/null
+          done
+
+  test:
+    runs-on: ubuntu-latest
+    env:
+      ODOO20_ROOT: ${{ github.workspace }}/odoo
+      ODOO20_DATA_DIR: ${{ runner.temp }}/odoo20-data
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: toolkit
+      - name: Odoo 20.0 source (shallow)
+        uses: actions/checkout@v4
+        with:
+          repository: odoo/odoo
+          ref: "20.0"
+          path: odoo
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: MCP server dependencies
+        run: pip install "mcp>=2.3,<3" "lxml>=5.2" "ruff>=0.6" "pytest>=8"
+      - name: Odoo revision
+        run: git -C odoo log --oneline -1
+      - name: Unit tests
+        working-directory: toolkit/mcp
+        run: python -m pytest -q
+      - name: Skill references exist in Odoo 20.0
+        working-directory: toolkit
+        run: python scripts/check_skill_refs.py
+      - name: Calibration on Odoo core (no false errors)
+        working-directory: toolkit/mcp
+        run: python -m pytest -q -m slow
+      - name: Generated references match the current Odoo 20.0 (informational)
+        working-directory: toolkit
+        continue-on-error: true
+        run: |
+          python scripts/gen_docs.py
+          python scripts/gen_tool_docs.py
+          git diff --stat --exit-code
